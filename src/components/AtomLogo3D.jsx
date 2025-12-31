@@ -96,7 +96,6 @@ function AtomScene() {
         
         {/* Three orbital rings at different angles */}
 
-
         <group rotation={[Math.PI / 2, Math.PI/4, 0]}>
           <OrbitalRing radius={2.2} speed={0.8} offset={0} />
         </group>

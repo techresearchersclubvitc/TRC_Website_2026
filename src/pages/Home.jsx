@@ -1,5 +1,6 @@
 import './Home.css';
 import { features } from '../data/content';
+import AtomLogo3D from '../components/AtomLogo3D';
 
 const Home = () => (
   <div className="home-shell">
@@ -20,17 +21,7 @@ const Home = () => (
           </a>
         </div>
       </div>
-      <div className="hero-art">
-        <div className="orb" />
-        <div className="hero-stat">
-          <h3>140+</h3>
-          <p>Active researchers</p>
-        </div>
-        <div className="hero-stat">
-          <h3>28</h3>
-          <p>Annual initiatives</p>
-        </div>
-      </div>
+      <AtomLogo3D />
     </section>
 
     <section className="section-wrapper">

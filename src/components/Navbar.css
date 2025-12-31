@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 5vw;
-  background: rgba(255, 249, 240, 0.95);
+  background-color: var(--secondary-dark);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(138, 109, 63, 0.25);
 }
@@ -16,14 +16,14 @@
   align-items: center;
   gap: 1rem;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--text-light);
 }
 
 .logo-mark {
-  width: 58px;
-  height: 58px;
+  width: 78px;
+  height: 78px;
   border-radius: 40% 60% 42% 58% / 45% 35% 65% 55%;
-  background: linear-gradient(160deg, var(--sunset), var(--accent));
+  background: linear-gradient(160deg, var(--secondary-dark), var(--secondary-dark));
   color: #fff;
   display: grid;
   place-items: center;
@@ -39,7 +39,7 @@
 
 .nav-links a {
   font-weight: 500;
-  color: var(--ink);
+  color: var(--text-light);
   position: relative;
   padding-bottom: 4px;
 }
@@ -52,7 +52,7 @@
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: var(--terracotta);
+  background: var(--accent-gold);
 }
 
 .nav-cta {

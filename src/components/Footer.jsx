@@ -1,9 +1,10 @@
+import clubLogo from '../assets/club_logo.png';
 import './Footer.css';
 
 const Footer = () => (
   <footer id="contact" className="footer-shell">
     <div className="footer-brand">
-      <div className="logo-mark">TRC</div>
+      <img src={clubLogo} alt="TRC Logo" className="logo-mark" />
       <div>
         <h4>Tech Researchers Club</h4>
         <p>Innovating the future through research and technology.</p>

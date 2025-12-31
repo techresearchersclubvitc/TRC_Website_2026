@@ -1,4 +1,5 @@
 :root {
+  /* Original theme colors */
   --cream-100: #fff9f0;
   --cream-200: #f7f0e4;
   --cream-300: #eee4d1;
@@ -8,6 +9,15 @@
   --terracotta: #c4543b;
   --olive: #8a6d3f;
   --accent: #b8336a;
+  
+  /* Colors from COLORS.md */
+  --bg-dark: #1E1E1E;
+  --primary-yellow: #FFD43B;
+  --secondary-dark: #2B2B2B;
+  --accent-gold: #F2C94C;
+  --text-light: #FAFAFA;
+  --gray: #5d6468;
+  
   --card-shadow: 0 30px 80px rgba(45, 28, 12, 0.18);
   --rounded-xl: 28px;
 }
@@ -19,7 +29,7 @@
 body {
   margin: 0;
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  background: var(--cream-200);
+  background: var(--gray);
   color: var(--ink);
 }
 

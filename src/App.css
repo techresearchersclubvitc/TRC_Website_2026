@@ -1,0 +1,1210 @@
+:root {
+  --bg-dark: #2c2c2f;
+  --bg-darker: #232327;
+  --accent-yellow: #ffd54a;
+  --accent-light: #e0e0e0;
+  --text-main: #f5f5f5;
+  --text-muted: #d0d0d0;
+}
+
+/* global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: linear-gradient(#313338, #25262a);
+}
+
+/* layout wrapper so it looks like the screenshot card */
+.page {
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: radial-gradient(circle at top, #3c3f45 0, #202124 50%, #18191d 100%);
+  color: var(--text-main);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* navbar */
+.navbar {
+  height: 72px;
+  background: #3b3d42;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* small atom in navbar */
+.logo-atom {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-yellow);
+  position: relative;
+}
+.logo-atom::before,
+.logo-atom::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-yellow);
+  transform: rotate(45deg);
+}
+.logo-atom::after {
+  transform: rotate(-45deg);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 0.95rem;
+}
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent-yellow);
+  transition: width 0.2s ease-out;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* hero */
+.hero {
+  position: relative;
+  padding: 60px 80px 80px;
+}
+
+.hero-atom-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* central atom design */
+.hero-atom {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* 2 white orbits */
+.hero-atom::before,
+.hero-atom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--accent-light);
+}
+.hero-atom::before {
+  transform: rotate(60deg);
+}
+.hero-atom::after {
+  transform: rotate(-60deg);
+}
+
+/* extra elements inside atom */
+.hero-atom-inner {
+  position: absolute;
+  inset: 0;
+}
+
+/* create center core + 3 yellow dots using box-shadow */
+.hero-atom::after {
+  box-shadow: none;
+}
+.hero-atom::before {
+  box-shadow:
+    0 -65px 0 0 var(--accent-yellow),
+    56px 32px 0 0 var(--accent-yellow),
+    -56px 32px 0 0 var(--accent-yellow),
+    0 0 18px rgba(0, 0, 0, 0.6);
+}
+
+/* center yellow circle */
+.hero-atom::marker {}
+
+/* rotate once on first load */
+.once-rotate {
+  animation: spin-once 2.5s ease-out 0.2s 1;
+}
+@keyframes spin-once {
+  from {
+    transform: rotate(0deg) scale(0.95);
+  }
+  60% {
+    transform: rotate(320deg) scale(1.05);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* hero content */
+.hero-banner {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #5c5f66, #52555c);
+  border-radius: 999px;
+  padding: 22px 60px;
+  text-align: center;
+}
+.hero-banner h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.hero-subtext {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 12px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
+    background 0.2s ease-out, color 0.2s ease-out;
+}
+
+.primary-btn {
+  background: var(--accent-yellow);
+  color: #222;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+}
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.45);
+}
+
+.secondary-btn {
+  background: #585b62;
+  color: var(--text-main);
+}
+.secondary-btn:hover {
+  background: #6a6d75;
+  transform: translateY(-2px);
+}
+
+/* orbit side decorations */
+.orbit {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  border-radius: 999px;
+  border: 3px solid #f5f5f5;
+  opacity: 0.9;
+  overflow: visible;
+}
+.orbit::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-yellow);
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* specific positions */
+.orbit-left-top {
+  left: -50px;
+  top: 140px;
+  transform: rotate(-25deg);
+}
+.orbit-left-top::after {
+  left: 18px;
+}
+.orbit-left-bottom {
+  left: -60px;
+  top: 360px;
+  transform: rotate(20deg);
+}
+.orbit-left-bottom::after {
+  left: 24px;
+}
+.orbit-right-top {
+  right: -60px;
+  top: 150px;
+  transform: rotate(24deg);
+}
+.orbit-right-top::after {
+  left: 130px;
+}
+.orbit-right-bottom {
+  right: -40px;
+  top: 360px;
+  transform: rotate(-20deg);
+}
+.orbit-right-bottom::after {
+  left: 126px;
+}
+
+/* floating animation for orbits */
+.orbit {
+  animation: float-orbit 6s ease-in-out infinite alternate;
+}
+@keyframes float-orbit {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+/* What we do section */
+.what-section {
+  margin-top: 40px;
+  padding: 32px 80px 80px;
+  background: linear-gradient(#3c3f45, #282a30);
+}
+
+.what-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.what-header h2 {
+  font-size: 1.7rem;
+  margin-bottom: 6px;
+}
+.what-header p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* cards */
+.what-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.what-card {
+  background: radial-gradient(circle at top, #4b4e55 0, #34363c 45%, #2a2b31 100%);
+  border-radius: 6px;
+  height: 210px;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+/* simple icon placeholder */
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid var(--accent-yellow);
+  margin-bottom: 16px;
+}
+
+/* scroll animation */
+.card-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* hover effect */
+.what-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+
+/* responsiveness */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 24px;
+  }
+  .hero {
+    padding: 40px 24px 60px;
+  }
+  .hero-banner {
+    padding: 18px 24px;
+  }
+  .what-section {
+    padding: 32px 24px 60px;
+  }
+  .what-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+  .hero-banner h1 {
+    font-size: 1.5rem;
+  }
+  .what-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* navbar SVG logo (no rotation) */
+/* navbar SVG logo (small, static) */
+.navbar-logo {
+  width: 26px;           /* try 22–30px if you want to adjust */
+  height: auto;
+  display: block;
+  animation: none !important;  /* no rotation */
+}
+
+
+/* ensure no animation is applied in nav */
+.navbar-logo {
+  animation: none !important;
+}
+/* generic side orbit SVG */
+.side-orbit {
+  position: absolute;
+  width: 110px;        /* smaller than original SVG so it fits edges */
+  height: auto;
+  opacity: 0.9;
+  animation: float-orbit 6s ease-in-out infinite alternate;
+}
+
+/* positions similar to your mockup */
+.side-orbit-left-top {
+  left: -40px;
+  top: 140px;
+}
+
+.side-orbit-left-bottom {
+  left: -45px;
+  top: 360px;
+}
+
+.side-orbit-right-top {
+  right: -50px;
+  top: 150px;
+}
+
+.side-orbit-right-bottom {
+  right: -40px;
+  top: 360px;
+}
+
+/* floating animation */
+@keyframes float-orbit {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(12px);
+  }
+}
+/* full-page orbit background */
+.orbits-bg {
+  position: fixed;        /* stays while page scrolls */
+  inset: 0;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  pointer-events: none;   /* clicks go through */
+  opacity: 0.15;         /* subtle behind content */
+  z-index: -1;           /* behind everything */
+  animation: orbits-drift 40s ease-in-out infinite alternate;
+}
+
+/* slow drifting / parallax feel */
+@keyframes orbits-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(0, -40px, 0) scale(1.02);
+  }
+}
+.page {
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  /* remove background here so it doesn't cover SVG */
+  /* background: radial-gradient(circle at top, #3c3f45 0, #202124 50%, #18191d 100%); */
+  color: var(--text-main);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* put the gradient on a separate layer instead */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #3c3f45 0, #202124 50%, #18191d 100%);
+  z-index: -2;
+}
+
+/* orbit background SVG */
+.orbits-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.35;              /* make it much more visible */
+  z-index: -1;                /* above gradient but below content */
+  animation: orbits-drift 40s ease-in-out infinite alternate;
+}
+.side-orbit {
+  position: fixed;     /* stays while user scrolls */
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+  animation: float-orbit 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* one orbit always in view on left center */
+.side-orbit-left-center {
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.page {
+  position: relative;
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* gradient at the very back */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #3c3f45 0, #202124 50%, #18191d 100%);
+  z-index: -3;
+}
+.orbits-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.4;            /* stronger */
+  z-index: -1;             /* above gradient, below content */
+  animation: orbits-drift 40s ease-in-out infinite alternate;
+}
+.side-orbit {
+  position: fixed;
+  width: 120px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 1;              /* in front of hero background & text */
+  animation: float-orbit 6s ease-in-out infinite alternate;
+}
+/* layout wrapper */
+.page {
+  position: relative;
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* gradient at the very back */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #3c3f45 0, #202124 50%, #18191d 100%);
+  z-index: -3;
+}
+
+/* full-page orbit background (SVG) */
+.orbits-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  opacity: 0.4;                 /* visible */
+  z-index: -1;                  /* above gradient, below content */
+  animation: orbits-drift 40s ease-in-out infinite alternate;
+}
+
+@keyframes orbits-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(0, -40px, 0) scale(1.02);
+  }
+}
+
+/* side orbit SVGs (on top of content) */
+.side-orbit {
+  position: fixed;              /* stays in view while scrolling */
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;                   /* front layer */
+  animation: float-orbit 6s ease-in-out infinite alternate;
+}
+
+.side-orbit-left-top {
+  left: -40px;
+  top: 140px;
+}
+
+.side-orbit-left-bottom {
+  left: -45px;
+  top: 360px;
+}
+
+.side-orbit-right-top {
+  right: -50px;
+  top: 150px;
+}
+
+.side-orbit-right-bottom {
+  right: -40px;
+  top: 360px;
+}
+
+/* one orbit always centered on left (optional) */
+.side-orbit-left-center {
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes float-orbit {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(12px);
+  }
+}
+/* container that holds all background shapes */
+.bg-orbits-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1; /* behind content, above page::before gradient if you use it */
+}
+
+/* main gradient */
+.bg-main {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #535353 0%, #535353 37%, #373636 100%);
+}
+
+/* generic orbit + dot styles */
+.bg-orbit {
+  position: absolute;
+  width: 81.02px;
+  height: 202.08px;
+  border-radius: 9999px;
+  border: 20px solid white;
+  background: rgba(217, 217, 217, 0);
+}
+
+.bg-dot {
+  position: absolute;
+  width: 33px;
+  height: 32px;
+  border-radius: 9999px;
+  background: #ffd706;
+}
+
+/* positions translated from your inline styles */
+.bg-orbit-1 {
+  left: 137.08px;
+  top: 81.8px;
+  transform: rotate(128deg);
+  transform-origin: top left;
+}
+.bg-dot-1 {
+  left: 79.88px;
+  top: 45.89px;
+}
+
+.bg-orbit-2 {
+  left: 1388.62px;
+  top: 295.96px;
+  transform: rotate(239deg);
+  transform-origin: top left;
+}
+.bg-dot-2 {
+  left: 1442.81px;
+  top: 255.66px;
+  transform: rotate(111deg);
+  transform-origin: top left;
+}
+
+.bg-orbit-3 {
+  left: 112.41px;
+  top: 656.92px;
+  transform: rotate(155deg);
+  transform-origin: top left;
+}
+.bg-dot-3 {
+  left: 78.06px;
+  top: 598.77px;
+  transform: rotate(27deg);
+  transform-origin: top left;
+}
+
+.bg-orbit-4 {
+  left: 1365.32px;
+  top: 1212.47px;
+  transform: rotate(-51deg);
+  transform-origin: top left;
+}
+.bg-dot-4 {
+  left: 1421.8px;
+  top: 1249.49px;
+  transform: rotate(-179deg);
+  transform-origin: top left;
+}
+
+.bg-orbit-5 {
+  left: 118.17px;
+  top: 974.05px;
+  transform: rotate(60deg);
+  transform-origin: top left;
+}
+.bg-dot-5 {
+  left: 63.2px;
+  top: 1013.3px;
+  transform: rotate(-68deg);
+  transform-origin: top left;
+}
+:root {
+  --bg-dark: #2c2c2f;
+  --bg-darker: #232327;
+  --accent-yellow: #ffd54a;
+  --accent-light: #e0e0e0;
+  --text-main: #f5f5f5;
+  --text-muted: #d0d0d0;
+}
+
+/* global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: linear-gradient(#313338, #25262a);
+}
+
+/* layout wrapper */
+.page {
+  position: relative;
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* gradient at the very back */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    #3c3f45 0,
+    #202124 50%,
+    #18191d 100%
+  );
+  z-index: -3;
+}
+
+/* background orbit container */
+.bg-orbits-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* main gradient from your inline code, but we already have page::before,
+   so keep this transparent or remove if double dark */
+.bg-main {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+}
+
+/* generic orbit + dot styles */
+.bg-orbit {
+  position: absolute;
+  width: 81.02px;
+  height: 202.08px;
+  border-radius: 9999px;
+  border: 20px solid white;
+  background: rgba(217, 217, 217, 0);
+  opacity: 0.35;
+}
+
+.bg-dot {
+  position: absolute;
+  width: 33px;
+  height: 32px;
+  border-radius: 9999px;
+  background: #ffd706;
+}
+
+/* positions from your inline JSX */
+.bg-orbit-1 {
+  left: 137.08px;
+  top: 81.8px;
+  transform: rotate(128deg);
+  transform-origin: top left;
+}
+.bg-dot-1 {
+  left: 79.88px;
+  top: 45.89px;
+}
+
+.bg-orbit-2 {
+  left: 1388.62px;
+  top: 295.96px;
+  transform: rotate(239deg);
+  transform-origin: top left;
+}
+.bg-dot-2 {
+  left: 1442.81px;
+  top: 255.66px;
+  transform: rotate(111deg);
+  transform-origin: top left;
+}
+
+.bg-orbit-3 {
+  left: 112.41px;
+  top: 656.92px;
+  transform: rotate(155deg);
+  transform-origin: top left;
+}
+.bg-dot-3 {
+  left: 78.06px;
+  top: 598.77px;
+  transform: rotate(27deg);
+  transform-origin: top left;
+}
+
+.bg-orbit-4 {
+  left: 1365.32px;
+  top: 1212.47px;
+  transform: rotate(-51deg);
+  transform-origin: top left;
+}
+.bg-dot-4 {
+  left: 1421.8px;
+  top: 1249.49px;
+  transform: rotate(-179deg);
+  transform-origin: top left;
+}
+
+.bg-orbit-5 {
+  left: 118.17px;
+  top: 974.05px;
+  transform: rotate(60deg);
+  transform-origin: top left;
+}
+.bg-dot-5 {
+  left: 63.2px;
+  top: 1013.3px;
+  transform: rotate(-68deg);
+  transform-origin: top left;
+}
+
+/* navbar */
+.navbar {
+  height: 72px;
+  background: #3b3d42;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* navbar SVG logo */
+.navbar-logo {
+  width: 26px;
+  height: auto;
+  display: block;
+  animation: none !important;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 0.95rem;
+}
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent-yellow);
+  transition: width 0.2s ease-out;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* hero */
+.hero {
+  position: relative;
+  padding: 60px 80px 80px;
+}
+
+.hero-atom-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* main atom sizing */
+.hero-atom {
+  width: 160px;
+  height: 160px;
+}
+
+/* rotate once on first load */
+.once-rotate {
+  animation: spin-once 2.5s ease-out 0.2s 1;
+}
+@keyframes spin-once {
+  from {
+    transform: rotate(0deg) scale(0.95);
+  }
+  60% {
+    transform: rotate(320deg) scale(1.05);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* hero content */
+.hero-banner {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #5c5f66, #52555c);
+  border-radius: 999px;
+  padding: 22px 60px;
+  text-align: center;
+}
+.hero-banner h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.hero-subtext {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 12px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
+    background 0.2s ease-out, color 0.2s ease-out;
+}
+
+.primary-btn {
+  background: var(--accent-yellow);
+  color: #222;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+}
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.45);
+}
+
+.secondary-btn {
+  background: #585b62;
+  color: var(--text-main);
+}
+.secondary-btn:hover {
+  background: #6a6d75;
+  transform: translateY(-2px);
+}
+
+/* What we do section */
+.what-section {
+  margin-top: 40px;
+  padding: 32px 80px 80px;
+  background: linear-gradient(#3c3f45, #282a30);
+}
+
+.what-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.what-header h2 {
+  font-size: 1.7rem;
+  margin-bottom: 6px;
+}
+.what-header p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* cards */
+.what-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.what-card {
+  background: radial-gradient(circle at top, #4b4e55 0, #34363c 45%, #2a2b31 100%);
+  border-radius: 16px;
+  height: 260px;
+  padding: 24px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+/* simple icon placeholder */
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid var(--accent-yellow);
+  margin-bottom: 16px;
+}
+
+.what-card-title {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.what-card-text p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* scroll animation */
+.card-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* hover effect */
+.what-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+
+/* responsiveness */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 24px;
+  }
+  .hero {
+    padding: 40px 24px 60px;
+  }
+  .hero-banner {
+    padding: 18px 24px;
+  }
+  .what-section {
+    padding: 32px 24px 60px;
+  }
+  .what-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+  .hero-banner h1 {
+    font-size: 1.5rem;
+  }
+  .what-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.macbook-pro-14-2 {
+  width: 100%;
+  min-height: 3864px;
+  position: relative;
+  background-color: #535353;
+  overflow: hidden;
+  text-align: center;
+  font-size: 32px;
+  color: #fff;
+}
+
+/* hero background band */
+.macbook-pro-14-2-child {
+  position: absolute;
+  top: 131px;
+  left: 0;
+  width: 1512px;
+  height: 852px;
+  background: linear-gradient(180deg, #535353, #535353 37.02%, #373636);
+}
+
+/* second band (around What we do) */
+.macbook-pro-14-2-item {
+  position: absolute;
+  top: 1002px;
+  left: -3px;
+  width: 1568px;
+  height: 969px;
+  background: linear-gradient(180deg, #535353, #535353 37.02%, #373636);
+}
+
+/* optional further bands if you have more sections */
+.macbook-pro-14-2-inner {
+  position: absolute;
+  top: 1962px;
+  left: -18px;
+  width: 1548px;
+  height: 969px;
+  background: linear-gradient(180deg, #535353, #535353 37.02%, #373636);
+}
+
+.rectangle-div {
+  position: absolute;
+  top: 2941px;
+  left: -18px;
+  width: 1599px;
+  height: 969px;
+  background: linear-gradient(180deg, #535353, #535353 37.02%, #373636);
+}
+
+/* move your main content slightly down so it sits inside the first band */
+.page {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  color: var(--text-main);
+  overflow-x: hidden;
+  padding-top: 140px; /* below navbar band */
+}
+.macbook-pro-14-2 {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #535353;
+  margin: 0;           /* no outer margin */
+  padding: 0;          /* no inner padding */
+}
+.page {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;     /* centered but no left gap beyond viewport */
+  padding: 0;         /* remove if you added padding-left */
+}
+body {
+  margin: 0;
+  background: linear-gradient(#313338, #25262a);
+}

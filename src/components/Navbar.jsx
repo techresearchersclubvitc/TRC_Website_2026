@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { navLinks } from '../data/content';
 import clubLogo from '../assets/club_logo.png';
+import OrbitsBackground from './OrbitsBackground';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -11,7 +12,7 @@ const Navbar = () => {
     <header className="nav-shell">
       <div className="nav-brand">
         <Link to="/">
-          <img src={clubLogo} alt="TRC Logo" className="logo-mark" />
+           <img src={clubLogo} alt="" className='logo-mark'/>
           <div >
             <p>Tech Researchers Club</p>
             <small>Innovating the future</small>

@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 5vw;
-  background-color: var(--secondary-dark);
+  background-color: var(--bg-darker);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(138, 109, 63, 0.25);
 }

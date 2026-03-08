@@ -144,7 +144,7 @@ const Events = () => {
         </h2>
 
         {/* DNA Helix - Fixed/Sticky in Center */}
-        <div className="absolute left-1/2 top-32 -translate-x-1/2 w-[500px] pointer-events-none" style={{ height: `${events.length * 600}px` }}>
+        <div className="absolute left-1/2 top-32 -translate-x-1/2 w-[500px] pointer-events-none" style={{ height: `${events.length * 550}px` }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -153,6 +153,24 @@ const Events = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#facc15]/5 to-transparent blur-3xl" />
             <DNAThread scrollVelocity={scrollVelocity} />
+            
+            {/* Dark gradient overlay at top for fade-in effect */}
+            <div 
+              className="absolute top-0 left-0 right-0 pointer-events-none"
+              style={{
+                height: '400px',
+                background: 'linear-gradient(to top, transparent 0%, rgba(10, 10, 10, 0.5) 40%, rgba(10, 10, 10, 0.9) 100%)'
+              }}
+            />
+            
+            {/* Dark gradient overlay at bottom for fade-out effect */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 pointer-events-none"
+              style={{
+                height: '400px',
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.5) 40%, rgba(10, 10, 10, 0.9) 100%)'
+              }}
+            />
           </motion.div>
         </div>
 

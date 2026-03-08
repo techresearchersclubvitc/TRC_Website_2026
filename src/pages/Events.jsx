@@ -22,9 +22,9 @@ const EventRing = ({ event, index }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`absolute ${isLeft ? 'lg:right-[55%] md:right-[60%] right-[65%]' : 'lg:left-[55%] md:left-[60%] left-[65%]'}`}
+      className={`absolute ${isLeft ? 'lg:right-[62%] md:right-[65%] right-[70%]' : 'lg:left-[62%] md:left-[65%] left-[70%]'}`}
       style={{ 
-        top: `${index * 700 + 80}px`,
+        top: `${index * 380 + 80}px`,
         zIndex: isHovered ? 50 : 10
       }}
     >
@@ -42,7 +42,7 @@ const EventRing = ({ event, index }) => {
               transition={{ duration: 0.2 }}
               className={`glass-border rounded-full px-6 py-3 cursor-pointer
                          hover:border-[#facc15]/70 transition-all duration-300
-                         ${isLeft ? 'lg:mr-8 md:mr-6 mr-4' : 'lg:ml-8 md:ml-6 ml-4'}`}
+                         ${isLeft ? 'lg:mr-16 md:mr-10 mr-6' : 'lg:ml-16 md:ml-10 ml-6'}`}
               style={{ minWidth: '200px' }}
             >
               <div className="text-center">
@@ -58,7 +58,7 @@ const EventRing = ({ event, index }) => {
               <motion.div
                 className={`absolute top-1/2 ${isLeft ? 'left-full' : 'right-full'} 
                            h-[2px] bg-gradient-to-r ${isLeft ? 'from-[#facc15]/50 to-transparent' : 'from-transparent to-[#facc15]/50'}`}
-                style={{ width: isLeft ? '100px' : '100px' }}
+                style={{ width: isLeft ? '180px' : '180px' }}
               />
               
               {/* Pulsing Ring Indicator */}
@@ -95,7 +95,7 @@ const EventRing = ({ event, index }) => {
               }}
               className={`glass-border rounded-sm p-6 cursor-pointer
                          border-[#facc15]/70 shadow-[0_0_40px_rgba(250,204,21,0.3)]
-                         ${isLeft ? 'lg:mr-8 md:mr-6 mr-4' : 'lg:ml-8 md:ml-6 ml-4'}`}
+                         ${isLeft ? 'lg:mr-16 md:mr-10 mr-6' : 'lg:ml-16 md:ml-10 ml-6'}`}
               style={{ 
                 minWidth: '320px',
                 maxWidth: '450px',
@@ -154,7 +154,7 @@ const EventRing = ({ event, index }) => {
               <motion.div
                 className={`absolute top-12 ${isLeft ? 'left-full' : 'right-full'} 
                            h-[2px] bg-gradient-to-r ${isLeft ? 'from-[#facc15] to-transparent' : 'from-transparent to-[#facc15]'}`}
-                style={{ width: '100px' }}
+                style={{ width: '180px' }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
@@ -222,7 +222,7 @@ const Events = () => {
         </h2>
 
         {/* DNA Helix - Fixed/Sticky in Center */}
-        <div className="absolute left-1/2 lg:left-1/2 md:left-1/3 max-md:left-1/4 lg:top-40 top-32 -translate-x-1/2 lg:w-[300px] md:w-[250px] max-md:w-[200px] pointer-events-none" style={{ height: `${events.length * 700 - 100}px` }}>
+        <div className="absolute left-1/2 lg:left-1/2 md:left-1/3 max-md:left-1/4 lg:top-40 top-32 -translate-x-1/2 lg:w-[300px] md:w-[250px] max-md:w-[200px] pointer-events-none" style={{ height: `${events.length * 380 - 50}px` }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -256,7 +256,7 @@ const Events = () => {
         <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent -translate-x-1/2 z-0" />
 
         {/* Event Rings */}
-        <div className="relative lg:pt-24 pt-16 lg:pb-24 pb-16" style={{ minHeight: `${events.length * 700}px` }}>
+        <div className="relative lg:pt-24 pt-16 lg:pb-24 pb-16" style={{ minHeight: `${events.length * 380}px` }}>
           {events.map((event, index) => (
             <EventRing key={event.id} event={event} index={index} />
           ))}

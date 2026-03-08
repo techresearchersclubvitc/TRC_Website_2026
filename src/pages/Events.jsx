@@ -19,57 +19,59 @@ const EventCard = ({ event, index }) => {
         type: 'spring',
         stiffness: 100
       }}
-      className={`relative mb-32 ${isLeft ? 'mr-auto pr-16' : 'ml-auto pl-16'}`}
+      className={`relative mb-32 
+        ${isLeft ? 'lg:mr-auto lg:pr-24' : 'lg:ml-auto lg:pl-24'}
+        max-lg:ml-auto max-lg:pl-8
+        lg:w-[42%] md:w-[70%] w-[85%]`}
       style={{ 
-        width: '45%',
-        minWidth: '320px',
+        minWidth: '280px',
         maxWidth: '500px'
       }}
     >
-      <div className="glass-border rounded-sm p-6 hover:border-[#facc15]/50 transition-all duration-300 group">
+      <div className="glass-border rounded-sm lg:p-6 p-4 hover:border-[#facc15]/50 transition-all duration-300 group">
         {/* Category Badge */}
         <div className="flex items-center justify-between mb-4">
-          <span className="font-mono text-xs text-[#facc15] tracking-wider">
+          <span className="font-mono lg:text-xs text-[10px] text-[#facc15] tracking-wider">
             [{event.category.toUpperCase()}]
           </span>
-          <span className="font-mono text-xs text-white/40">
+          <span className="font-mono lg:text-xs text-[10px] text-white/40">
             ID: {String(event.id).padStart(3, '0')}
           </span>
         </div>
 
         {/* Event Title */}
-        <h3 className="text-2xl font-black mb-3 group-hover:text-[#facc15] transition-colors">
+        <h3 className="lg:text-2xl text-lg font-black mb-3 group-hover:text-[#facc15] transition-colors">
           {event.title}
         </h3>
 
         {/* Date - Large Monospace */}
-        <div className="font-mono text-xl font-semibold text-[#facc15] mb-4 tracking-tight">
+        <div className="font-mono lg:text-xl text-base font-semibold text-[#facc15] mb-4 tracking-tight">
           {event.date}
         </div>
 
         {/* Details Grid */}
-        <div className="space-y-2 mb-4 text-sm">
+        <div className="space-y-2 mb-4 lg:text-sm text-xs">
           <div className="flex items-start">
-            <span className="font-mono text-white/50 w-20">TIME:</span>
+            <span className="font-mono text-white/50 lg:w-20 w-16">TIME:</span>
             <span className="text-white/80">{event.time}</span>
           </div>
           <div className="flex items-start">
-            <span className="font-mono text-white/50 w-20">VENUE:</span>
+            <span className="font-mono text-white/50 lg:w-20 w-16">VENUE:</span>
             <span className="text-white/80">{event.venue}</span>
           </div>
           <div className="flex items-start">
-            <span className="font-mono text-white/50 w-20">SIZE:</span>
+            <span className="font-mono text-white/50 lg:w-20 w-16">SIZE:</span>
             <span className="text-white/80">{event.capacity}</span>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-white/70 text-sm leading-relaxed mb-6 border-t border-white/10 pt-4">
+        <p className="text-white/70 lg:text-sm text-xs leading-relaxed lg:mb-6 mb-4 border-t border-white/10 lg:pt-4 pt-3">
           {event.description}
         </p>
 
         {/* Action Button */}
-        <button className="w-full py-2 px-4 border border-white/20 rounded text-sm font-mono 
+        <button className="w-full lg:py-2 py-1.5 lg:px-4 px-3 border border-white/20 rounded lg:text-sm text-xs font-mono 
                          hover:bg-[#facc15] hover:text-[#0a0a0a] hover:border-[#facc15] 
                          transition-all duration-300">
           REGISTER_NOW →
@@ -123,28 +125,28 @@ const Events = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative text-center mb-16 px-8"
+        className="relative text-center lg:mb-16 mb-12 lg:px-8 px-4"
       >
-        <div className="font-mono text-xs text-[#facc15] mb-4 tracking-widest">
+        <div className="font-mono lg:text-xs text-[10px] text-[#facc15] lg:mb-4 mb-3 tracking-widest">
           [ WORKSHOPS · CONFERENCES · SYMPOSIUMS ]
         </div>
-        <h1 className="text-6xl font-black mb-6">
+        <h1 className="lg:text-6xl md:text-5xl text-4xl font-black lg:mb-6 mb-4">
           Event <span className="text-[#facc15]">Timeline</span>
         </h1>
-        <p className="text-white/60 max-w-2xl mx-auto font-mono text-sm">
+        <p className="text-white/60 max-w-2xl mx-auto font-mono lg:text-sm text-xs">
           // Immersive experiences that blend research showcases with hands-on collaborative labs
         </p>
       </motion.div>
 
       {/* Timeline Container with DNA Helix */}
-      <div className="relative max-w-6xl mx-auto px-8">
-        <h2 className="text-4xl font-black text-center mb-16">
+      <div className="relative max-w-6xl mx-auto lg:px-8 px-4">
+        <h2 className="lg:text-4xl md:text-3xl text-2xl font-black text-center lg:mb-16 mb-12">
           <span className="text-white">Upcoming </span>
           <span className="text-[#facc15]">Events</span>
         </h2>
 
         {/* DNA Helix - Fixed/Sticky in Center */}
-        <div className="absolute left-1/2 top-32 -translate-x-1/2 w-[500px] pointer-events-none" style={{ height: `${events.length * 550}px` }}>
+        <div className="absolute left-1/2 lg:left-1/2 md:left-1/3 max-md:left-1/4 lg:top-40 top-32 -translate-x-1/2 lg:w-[500px] md:w-[400px] max-md:w-[300px] pointer-events-none" style={{ height: `${events.length * 550 + 250}px` }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -167,8 +169,8 @@ const Events = () => {
             <div 
               className="absolute bottom-0 left-0 right-0 pointer-events-none"
               style={{
-                height: '400px',
-                background: 'linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.5) 40%, rgba(10, 10, 10, 0.9) 100%)'
+                height: '500px',
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.3) 30%, rgba(10, 10, 10, 0.7) 60%, rgba(10, 10, 10, 0.95) 100%)'
               }}
             />
           </motion.div>
@@ -178,15 +180,13 @@ const Events = () => {
         <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent -translate-x-1/2 z-0" />
 
         {/* Event Cards */}
-        <div className="relative">
+        <div className="relative lg:pt-24 pt-16 lg:pb-32 pb-24">
           {events.map((event, index) => (
             <EventCard key={event.id} event={event} index={index} />
           ))}
         </div>
       </div>
 
-      {/* Bottom Spacer */}
-      <div className="h-32" />
     </div>
   );
 };

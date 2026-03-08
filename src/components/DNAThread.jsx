@@ -160,10 +160,22 @@ function DNAHelix({ scrollVelocity }) {
 
 // Main DNA Thread Canvas Component
 export default function DNAThread({ scrollVelocity = 0 }) {
+  // Responsive camera positioning
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
+  
+  const cameraPosition = isMobile 
+    ? [5, 0, 18] // Mobile: farther away to fit in smaller space
+    : isTablet 
+    ? [4, 0, 14] // Tablet: moderate distance
+    : [15, 0, 15]; // Desktop: current view
+  
+  const fov = isMobile ? 90 : isTablet ? 85 : 80;
+  
   return (
     <div className="w-full h-full relative">
       <Canvas
-        camera={{ position: [15, 0, 15], fov: 80 }}
+        camera={{ position: cameraPosition, fov: fov }}
         gl={{ alpha: true, antialias: true }}
       >
         <ambientLight intensity={0.3} />

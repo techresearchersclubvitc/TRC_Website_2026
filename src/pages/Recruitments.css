@@ -4,8 +4,53 @@
   gap: 2rem;
 }
 
+/* Recruitment Closed Banner */
+.recruitment-closed-banner {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(250, 204, 21, 0.08);
+  border: 2px solid rgba(250, 204, 21, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(250, 204, 21, 0.1);
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.banner-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.5));
+}
+
+.banner-text h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #facc15;
+  margin: 0 0 0.5rem;
+  font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.banner-text p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.5;
+}
+
 .recruit-grid {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Disabled state for recruitment grid */
+.recruit-grid-disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .recruit-card {
@@ -28,4 +73,34 @@
 
 .recruit-card .btn {
   align-self: flex-start;
+}
+
+.recruit-card .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Banner */
+@media (max-width: 768px) {
+  .recruitment-closed-banner {
+    padding: 1.5rem;
+  }
+
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .banner-icon {
+    font-size: 2.5rem;
+  }
+
+  .banner-text h3 {
+    font-size: 1.4rem;
+  }
+
+  .banner-text p {
+    font-size: 0.9rem;
+  }
 }

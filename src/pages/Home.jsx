@@ -79,7 +79,7 @@ const TerminalMarquee = () => {
     '[SUCCESS] Symposium dates finalized...',
     '[DATA] Collaboration requests pending: 3',
     '[SYSTEM] Publication pipeline active',
-    '[ALERT] Recruitment applications open',
+    '[ALERT] Recruitment applications closed',
     '[INFO] Lab access granted to new members',
     '[SUCCESS] Research paper submitted for review',
   ];

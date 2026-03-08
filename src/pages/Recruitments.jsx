@@ -10,13 +10,24 @@ const Recruitments = () => (
       and share research stories with the world.
     </p>
 
-    <div className="grid recruit-grid">
+    {/* Recruitment Closed Banner */}
+    <div className="recruitment-closed-banner">
+      <div className="banner-content">
+        <span className="banner-icon">⚠</span>
+        <div className="banner-text">
+          <h3>Recruitments Closed</h3>
+          <p>We are currently not recruiting. Please check back later for future opportunities.</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="grid recruit-grid recruit-grid-disabled">
       {recruitmentTracks.map((track) => (
         <article key={track.title} className="card recruit-card">
           <div className="recruit-icon" />
           <h3>{track.title}</h3>
           <p>{track.blurb}</p>
-          <button className="btn btn-outline">Apply Now</button>
+          <button className="btn btn-outline" disabled>Currently Closed</button>
         </article>
       ))}
     </div>

@@ -1,42 +1,23 @@
-import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './Contact.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  // Board Members Contact Information
+  const boardMembers = [
+    { name: 'Diraq', role: 'Chairperson', email: 'diraq@techresearchers.club' },
+    { name: 'Abhinav', role: 'Vice Chair', email: 'abhinav@techresearchers.club' },
+    { name: 'Prayasha', role: 'Chair', email: 'prayasha@techresearchers.club' }
+  ];
 
-  const buttonRef = useRef(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
-  };
-
-  // Magnetic hover effect
-  const handleMouseMove = (e) => {
-    if (!buttonRef.current) return;
-    const rect = buttonRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    setMousePosition({ x: x * 0.3, y: y * 0.3 });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePosition({ x: 0, y: 0 });
-  };
+  // Department Leads Contact Information
+  const departmentLeads = [
+    { name: 'Aditya Bhandari', department: 'Web Dev - Backend', email: 'aditya.backend@techresearchers.club' },
+    { name: 'Priyanka', department: 'Web Dev - Frontend', email: 'priyanka.frontend@techresearchers.club' },
+    { name: 'Viswosurya', department: 'Design', email: 'viswosurya.design@techresearchers.club' },
+    { name: 'Hemeshwar', department: 'Content', email: 'hemeshwar.content@techresearchers.club' },
+    { name: 'Tarun', department: 'Research & Dev', email: 'tarun.research@techresearchers.club' },
+    { name: 'Omar', department: 'Outreach', email: 'omar.outreach@techresearchers.club' }
+  ];
 
   return (
     <div className="contact-page">
@@ -44,106 +25,105 @@ const Contact = () => {
       <div className="grid-pattern" />
 
       <div className="contact-container">
-        {/* Form Section */}
+        {/* Header Section */}
         <motion.div
-          className="form-section"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="contact-header"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h1 className="contact-title">Get In Touch</h1>
-            <p className="contact-subtitle">
-              Have a question or want to collaborate? Drop us a message.
-            </p>
-          </motion.div>
-
-          <motion.form
-            onSubmit={handleSubmit}
-            className="contact-form"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {/* Name Field */}
-            <div className="form-group">
-              <label htmlFor="name">NAME</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                placeholder="Enter your name"
-              />
-            </div>
-
-            {/* Email Field */}
-            <div className="form-group">
-              <label htmlFor="email">EMAIL</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                placeholder="your.email@example.com"
-              />
-            </div>
-
-            {/* Message Field */}
-            <div className="form-group">
-              <label htmlFor="message">MESSAGE</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                placeholder="Tell us what you're thinking..."
-                rows="6"
-              />
-            </div>
-
-            {/* Submit Button with Magnetic Effect */}
-            <motion.button
-              ref={buttonRef}
-              type="submit"
-              className="submit-btn"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              animate={{ x: mousePosition.x, y: mousePosition.y }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              SEND MESSAGE →
-            </motion.button>
-          </motion.form>
+          <h1 className="contact-title">Contact Us</h1>
+          <p className="contact-subtitle">
+            Reach out to our board members and department leads directly via email.
+          </p>
         </motion.div>
 
-        {/* Contact Info Sidebar */}
+        {/* Board Members Section */}
+        <motion.div
+          className="contacts-section"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h2 className="section-title">
+            <span className="title-bracket">[</span>
+            BOARD MEMBERS
+            <span className="title-bracket">]</span>
+          </h2>
+          <div className="contacts-grid">
+            {boardMembers.map((member, index) => (
+              <motion.div
+                key={member.email}
+                className="contact-card"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div className="card-header">
+                  <h3 className="contact-name">{member.name}</h3>
+                  <span className="contact-role">{member.role}</span>
+                </div>
+                <a href={`mailto:${member.email}`} className="contact-email">
+                  <span className="email-icon">✉</span>
+                  {member.email}
+                </a>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Department Leads Section */}
+        <motion.div
+          className="contacts-section"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <h2 className="section-title">
+            <span className="title-bracket">[</span>
+            DEPARTMENT LEADS
+            <span className="title-bracket">]</span>
+          </h2>
+          <div className="contacts-grid">
+            {departmentLeads.map((lead, index) => (
+              <motion.div
+                key={lead.email}
+                className="contact-card"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div className="card-header">
+                  <h3 className="contact-name">{lead.name}</h3>
+                  <span className="contact-role">{lead.department}</span>
+                </div>
+                <a href={`mailto:${lead.email}`} className="contact-email">
+                  <span className="email-icon">✉</span>
+                  {lead.email}
+                </a>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* General Info Sidebar */}
         <motion.div
           className="info-section"
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.8 }}
         >
           <motion.div
             className="info-card"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 1 }}
           >
-            <h3 className="info-title">Contact Information</h3>
+            <h3 className="info-title">General Information</h3>
 
-            {/* Email */}
+            {/* General Email */}
             <div className="info-item">
               <span className="info-label">[MAIL]</span>
               <a href="mailto:contact@techresearchers.club" className="info-value">
@@ -205,7 +185,7 @@ const Contact = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 0.8,
-              delay: 0.8,
+              delay: 1.2,
               type: 'spring',
               stiffness: 200
             }}

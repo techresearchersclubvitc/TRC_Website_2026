@@ -195,13 +195,147 @@ const Events = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a] py-24">
+    <div className="relative min-h-screen bg-[#0a0a0a] py-24 overflow-hidden">
+      {/* Space Background - Nebula-like glow */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 900px 700px at 12% 35%, rgba(75, 0, 130, 0.15) 0%, transparent 60%),
+            radial-gradient(ellipse 900px 700px at 88% 65%, rgba(25, 25, 112, 0.15) 0%, transparent 60%)
+          `,
+          zIndex: 1
+        }}
+      />
+      
+      {/* Bright Star Clusters - Left Side */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(circle 15px at 8% 15%, rgba(255, 255, 255, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 8% 15%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 10px at 10% 13%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 10% 13%, rgba(255, 255, 255, 0.95), transparent),
+            radial-gradient(circle 12px at 7% 17%, rgba(255, 255, 255, 0.35), transparent 40%),
+            radial-gradient(circle 3.5px at 7% 17%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 8px at 11% 16%, rgba(255, 255, 255, 0.25), transparent 40%),
+            radial-gradient(circle 2.5px at 11% 16%, rgba(255, 255, 255, 0.9), transparent),
+            radial-gradient(circle 14px at 6% 14%, rgba(250, 204, 21, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 6% 14%, rgba(250, 204, 21, 1), transparent),
+            radial-gradient(circle 10px at 9.5% 18%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 9.5% 18%, rgba(255, 255, 255, 0.95), transparent),
+            
+            radial-gradient(circle 15px at 10% 40%, rgba(255, 255, 255, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 10% 40%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 12px at 7% 42%, rgba(255, 255, 255, 0.35), transparent 40%),
+            radial-gradient(circle 3.5px at 7% 42%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 10px at 12% 38%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 12% 38%, rgba(255, 255, 255, 0.95), transparent),
+            radial-gradient(circle 14px at 8% 44%, rgba(250, 204, 21, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 8% 44%, rgba(250, 204, 21, 1), transparent),
+            radial-gradient(circle 8px at 11% 41%, rgba(255, 255, 255, 0.25), transparent 40%),
+            radial-gradient(circle 2.5px at 11% 41%, rgba(255, 255, 255, 0.9), transparent),
+            radial-gradient(circle 10px at 6% 39%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 6% 39%, rgba(255, 255, 255, 0.95), transparent),
+            
+            radial-gradient(circle 15px at 9% 70%, rgba(255, 255, 255, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 9% 70%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 12px at 11% 68%, rgba(255, 255, 255, 0.35), transparent 40%),
+            radial-gradient(circle 3.5px at 11% 68%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 10px at 7% 72%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 7% 72%, rgba(255, 255, 255, 0.95), transparent),
+            radial-gradient(circle 14px at 12% 71%, rgba(250, 204, 21, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 12% 71%, rgba(250, 204, 21, 1), transparent),
+            radial-gradient(circle 8px at 8% 67%, rgba(255, 255, 255, 0.25), transparent 40%),
+            radial-gradient(circle 2.5px at 8% 67%, rgba(255, 255, 255, 0.9), transparent),
+            radial-gradient(circle 10px at 10.5% 73%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 10.5% 73%, rgba(255, 255, 255, 0.95), transparent)
+          `,
+          zIndex: 1
+        }}
+      />
+      
+      {/* Bright Star Clusters - Right Side */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(circle 15px at 92% 20%, rgba(255, 255, 255, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 92% 20%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 10px at 90% 22%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 90% 22%, rgba(255, 255, 255, 0.95), transparent),
+            radial-gradient(circle 12px at 93% 18%, rgba(255, 255, 255, 0.35), transparent 40%),
+            radial-gradient(circle 3.5px at 93% 18%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 8px at 89% 19%, rgba(255, 255, 255, 0.25), transparent 40%),
+            radial-gradient(circle 2.5px at 89% 19%, rgba(255, 255, 255, 0.9), transparent),
+            radial-gradient(circle 14px at 94% 21%, rgba(250, 204, 21, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 94% 21%, rgba(250, 204, 21, 1), transparent),
+            radial-gradient(circle 10px at 91.5% 23%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 91.5% 23%, rgba(255, 255, 255, 0.95), transparent),
+            
+            radial-gradient(circle 15px at 90% 48%, rgba(255, 255, 255, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 90% 48%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 12px at 93% 46%, rgba(255, 255, 255, 0.35), transparent 40%),
+            radial-gradient(circle 3.5px at 93% 46%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 10px at 88% 50%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 88% 50%, rgba(255, 255, 255, 0.95), transparent),
+            radial-gradient(circle 14px at 92% 52%, rgba(250, 204, 21, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 92% 52%, rgba(250, 204, 21, 1), transparent),
+            radial-gradient(circle 8px at 89% 47%, rgba(255, 255, 255, 0.25), transparent 40%),
+            radial-gradient(circle 2.5px at 89% 47%, rgba(255, 255, 255, 0.9), transparent),
+            radial-gradient(circle 10px at 94% 49%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 94% 49%, rgba(255, 255, 255, 0.95), transparent),
+            
+            radial-gradient(circle 15px at 91% 78%, rgba(255, 255, 255, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 91% 78%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 12px at 89% 80%, rgba(255, 255, 255, 0.35), transparent 40%),
+            radial-gradient(circle 3.5px at 89% 80%, rgba(255, 255, 255, 1), transparent),
+            radial-gradient(circle 10px at 93% 76%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 93% 76%, rgba(255, 255, 255, 0.95), transparent),
+            radial-gradient(circle 14px at 88% 79%, rgba(250, 204, 21, 0.4), transparent 40%),
+            radial-gradient(circle 4px at 88% 79%, rgba(250, 204, 21, 1), transparent),
+            radial-gradient(circle 8px at 92% 81%, rgba(255, 255, 255, 0.25), transparent 40%),
+            radial-gradient(circle 2.5px at 92% 81%, rgba(255, 255, 255, 0.9), transparent),
+            radial-gradient(circle 10px at 90.5% 77%, rgba(255, 255, 255, 0.3), transparent 40%),
+            radial-gradient(circle 3px at 90.5% 77%, rgba(255, 255, 255, 0.95), transparent)
+          `,
+          zIndex: 1
+        }}
+      />
+      
+      {/* Smaller Scattered Stars */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-90"
+        style={{
+          background: `
+            radial-gradient(circle 8px at 5% 25%, rgba(255, 255, 255, 0.3), transparent 50%),
+            radial-gradient(circle 2.5px at 5% 25%, white, transparent),
+            radial-gradient(circle 8px at 13% 55%, rgba(255, 255, 255, 0.3), transparent 50%),
+            radial-gradient(circle 2.5px at 13% 55%, white, transparent),
+            radial-gradient(circle 8px at 4% 85%, rgba(255, 255, 255, 0.3), transparent 50%),
+            radial-gradient(circle 2.5px at 4% 85%, white, transparent),
+            radial-gradient(circle 8px at 95% 30%, rgba(255, 255, 255, 0.3), transparent 50%),
+            radial-gradient(circle 2.5px at 95% 30%, white, transparent),
+            radial-gradient(circle 8px at 87% 62%, rgba(255, 255, 255, 0.3), transparent 50%),
+            radial-gradient(circle 2.5px at 87% 62%, white, transparent),
+            radial-gradient(circle 8px at 96% 88%, rgba(255, 255, 255, 0.3), transparent 50%),
+            radial-gradient(circle 2.5px at 96% 88%, white, transparent),
+            radial-gradient(circle 10px at 14% 32%, rgba(250, 204, 21, 0.35), transparent 50%),
+            radial-gradient(circle 3px at 14% 32%, rgba(250, 204, 21, 1), transparent),
+            radial-gradient(circle 10px at 86% 35%, rgba(250, 204, 21, 0.35), transparent 50%),
+            radial-gradient(circle 3px at 86% 35%, rgba(250, 204, 21, 1), transparent)
+          `,
+          zIndex: 1
+        }}
+      />
+      
       {/* Header Section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative text-center lg:mb-16 mb-12 lg:px-8 px-4"
+        className="relative text-center lg:mb-16 mb-12 lg:px-8 px-4 z-10"
       >
         <div className="font-mono lg:text-xs text-[10px] text-[#facc15] lg:mb-4 mb-3 tracking-widest">
           [ WORKSHOPS · CONFERENCES · SYMPOSIUMS ]
@@ -215,7 +349,7 @@ const Events = () => {
       </motion.div>
 
       {/* Timeline Container with DNA Helix */}
-      <div className="relative max-w-6xl mx-auto lg:px-8 px-4">
+      <div className="relative max-w-6xl mx-auto lg:px-8 px-4 z-10">
         <h2 className="lg:text-4xl md:text-3xl text-2xl font-black text-center lg:mb-16 mb-12">
           <span className="text-white">Upcoming </span>
           <span className="text-[#facc15]">Events</span>

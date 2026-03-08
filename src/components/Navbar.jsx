@@ -30,9 +30,6 @@ const Navbar = () => {
             {link.label}
           </NavLink>
         ))}
-        <a href="#contact" className=" nav-cta">
-          Contact Us
-        </a>
       </nav>
       <button
         className={`nav-toggle ${open ? 'open' : ''}`}

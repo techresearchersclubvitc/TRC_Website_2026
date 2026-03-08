@@ -2,7 +2,8 @@ export const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'Team', path: '/team' },
   { label: 'Events', path: '/events' },
-  { label: 'Recruitments', path: '/recruitments' }
+  { label: 'Recruitments', path: '/recruitments' },
+  { label: 'Contact Us', path: '/contact' }
 ];
 
 export const features = [

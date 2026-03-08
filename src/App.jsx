@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import Team from './pages/Team';
 import Recruitments from './pages/Recruitments';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/team" element={<Team />} />
           <Route path="/recruitments" element={<Recruitments />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       <Footer />

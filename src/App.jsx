@@ -8,7 +8,7 @@ import Recruitments from './pages/Recruitments';
 
 function App() {
   return (
-    <div className="app-shell">
+    <div className="min-h-screen bg-[#0a0a0a]">
       <Navbar />
       <main>
         <Routes>

@@ -34,9 +34,9 @@ function DNAHelix({ scrollVelocity }) {
   const createHelix = () => {
     const spheres = [];
     const bonds = [];
-    const numPairs = 90; // Increased for longer helix
-    const helixHeight = 40; // Increased height
-    const radius = 0.8;
+    const numPairs = 80; // Adjusted for proper length
+    const helixHeight = 35; // Reduced height
+    const radius = 0.6; // Smaller radius
     const sphereSize = 0.009;
 
     // Color palette inspired by colorful DNA
@@ -165,12 +165,12 @@ export default function DNAThread({ scrollVelocity = 0 }) {
   const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
   
   const cameraPosition = isMobile 
-    ? [5, 0, 18] // Mobile: farther away to fit in smaller space
+    ? [4, 0, 16] // Mobile: adjusted for smaller helix
     : isTablet 
-    ? [4, 0, 14] // Tablet: moderate distance
-    : [15, 0, 15]; // Desktop: current view
+    ? [3.5, 0, 12] // Tablet: closer view
+    : [12, 0, 12]; // Desktop: closer for smaller helix
   
-  const fov = isMobile ? 90 : isTablet ? 85 : 80;
+  const fov = isMobile ? 85 : isTablet ? 80 : 75;
   
   return (
     <div className="w-full h-full relative">

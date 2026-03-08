@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { events } from '../data/content';
 import DNAThread from '../components/DNAThread';
 
-const EventCard = ({ event, index }) => {
+const EventRing = ({ event, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const isLeft = index % 2 === 0;
@@ -11,82 +12,157 @@ const EventCard = ({ event, index }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: isLeft ? -80 : 80, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, x: 0, scale: 1 } : {}}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
       transition={{ 
-        duration: 0.7, 
-        delay: index * 0.1,
+        duration: 0.6, 
+        delay: index * 0.15,
         type: 'spring',
-        stiffness: 100
+        stiffness: 120
       }}
-      className={`relative mb-32 
-        ${isLeft ? 'lg:mr-auto lg:pr-24' : 'lg:ml-auto lg:pl-24'}
-        max-lg:ml-auto max-lg:pl-8
-        lg:w-[42%] md:w-[70%] w-[85%]`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`absolute ${isLeft ? 'lg:right-[55%] md:right-[60%] right-[65%]' : 'lg:left-[55%] md:left-[60%] left-[65%]'}`}
       style={{ 
-        minWidth: '280px',
-        maxWidth: '500px'
+        top: `${index * 700 + 80}px`,
+        zIndex: isHovered ? 50 : 10
       }}
     >
-      <div className="glass-border rounded-sm lg:p-6 p-4 hover:border-[#facc15]/50 transition-all duration-300 group">
-        {/* Category Badge */}
-        <div className="flex items-center justify-between mb-4">
-          <span className="font-mono lg:text-xs text-[10px] text-[#facc15] tracking-wider">
-            [{event.category.toUpperCase()}]
-          </span>
-          <span className="font-mono lg:text-xs text-[10px] text-white/40">
-            ID: {String(event.id).padStart(3, '0')}
-          </span>
-        </div>
+      <motion.div
+        layout
+        className="relative"
+      >
+        {/* Collapsed Ring State */}
+        <AnimatePresence>
+          {!isHovered && (
+            <motion.div
+              layout
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              className={`glass-border rounded-full px-6 py-3 cursor-pointer
+                         hover:border-[#facc15]/70 transition-all duration-300
+                         ${isLeft ? 'lg:mr-8 md:mr-6 mr-4' : 'lg:ml-8 md:ml-6 ml-4'}`}
+              style={{ minWidth: '200px' }}
+            >
+              <div className="text-center">
+                <div className="font-mono text-xs text-[#facc15] mb-1 tracking-wider">
+                  {event.date}
+                </div>
+                <div className="text-sm font-bold text-white/90 truncate">
+                  {event.title}
+                </div>
+              </div>
+              
+              {/* Connector Line to Helix */}
+              <motion.div
+                className={`absolute top-1/2 ${isLeft ? 'left-full' : 'right-full'} 
+                           h-[2px] bg-gradient-to-r ${isLeft ? 'from-[#facc15]/50 to-transparent' : 'from-transparent to-[#facc15]/50'}`}
+                style={{ width: isLeft ? '100px' : '100px' }}
+              />
+              
+              {/* Pulsing Ring Indicator */}
+              <motion.div
+                className={`absolute top-1/2 -translate-y-1/2 ${isLeft ? '-right-2' : '-left-2'}
+                           w-4 h-4 bg-[#facc15] rounded-full`}
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        {/* Event Title */}
-        <h3 className="lg:text-2xl text-lg font-black mb-3 group-hover:text-[#facc15] transition-colors">
-          {event.title}
-        </h3>
+        {/* Expanded Card State */}
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.85, x: isLeft ? -20 : 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.85, x: isLeft ? -20 : 20 }}
+              transition={{ 
+                duration: 0.4,
+                type: 'spring',
+                stiffness: 200,
+                damping: 25
+              }}
+              className={`glass-border rounded-sm p-6 cursor-pointer
+                         border-[#facc15]/70 shadow-[0_0_40px_rgba(250,204,21,0.3)]
+                         ${isLeft ? 'lg:mr-8 md:mr-6 mr-4' : 'lg:ml-8 md:ml-6 ml-4'}`}
+              style={{ 
+                minWidth: '320px',
+                maxWidth: '450px',
+                width: '420px'
+              }}
+            >
+              {/* Category Badge */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-xs text-[#facc15] tracking-wider">
+                  [{event.category.toUpperCase()}]
+                </span>
+                <span className="font-mono text-xs text-white/40">
+                  ID: {String(event.id).padStart(3, '0')}
+                </span>
+              </div>
 
-        {/* Date - Large Monospace */}
-        <div className="font-mono lg:text-xl text-base font-semibold text-[#facc15] mb-4 tracking-tight">
-          {event.date}
-        </div>
+              {/* Event Title */}
+              <h3 className="text-2xl font-black mb-3 text-[#facc15]">
+                {event.title}
+              </h3>
 
-        {/* Details Grid */}
-        <div className="space-y-2 mb-4 lg:text-sm text-xs">
-          <div className="flex items-start">
-            <span className="font-mono text-white/50 lg:w-20 w-16">TIME:</span>
-            <span className="text-white/80">{event.time}</span>
-          </div>
-          <div className="flex items-start">
-            <span className="font-mono text-white/50 lg:w-20 w-16">VENUE:</span>
-            <span className="text-white/80">{event.venue}</span>
-          </div>
-          <div className="flex items-start">
-            <span className="font-mono text-white/50 lg:w-20 w-16">SIZE:</span>
-            <span className="text-white/80">{event.capacity}</span>
-          </div>
-        </div>
+              {/* Date - Large Monospace */}
+              <div className="font-mono text-xl font-semibold text-[#facc15] mb-4 tracking-tight">
+                {event.date}
+              </div>
 
-        {/* Description */}
-        <p className="text-white/70 lg:text-sm text-xs leading-relaxed lg:mb-6 mb-4 border-t border-white/10 lg:pt-4 pt-3">
-          {event.description}
-        </p>
+              {/* Details Grid */}
+              <div className="space-y-2 mb-4 text-sm">
+                <div className="flex items-start">
+                  <span className="font-mono text-white/50 w-20">TIME:</span>
+                  <span className="text-white/80">{event.time}</span>
+                </div>
+                <div className="flex items-start">
+                  <span className="font-mono text-white/50 w-20">VENUE:</span>
+                  <span className="text-white/80">{event.venue}</span>
+                </div>
+                <div className="flex items-start">
+                  <span className="font-mono text-white/50 w-20">SIZE:</span>
+                  <span className="text-white/80">{event.capacity}</span>
+                </div>
+              </div>
 
-        {/* Action Button */}
-        <button className="w-full lg:py-2 py-1.5 lg:px-4 px-3 border border-white/20 rounded lg:text-sm text-xs font-mono 
-                         hover:bg-[#facc15] hover:text-[#0a0a0a] hover:border-[#facc15] 
-                         transition-all duration-300">
-          REGISTER_NOW →
-        </button>
-      </div>
+              {/* Description */}
+              <p className="text-white/70 text-sm leading-relaxed mb-6 border-t border-white/10 pt-4">
+                {event.description}
+              </p>
 
-      {/* Connector Dot */}
-      <div
-        className={`absolute top-8 ${isLeft ? 'right-0' : 'left-0'} w-4 h-4 
-                   bg-[#facc15] rounded-full border-4 border-[#0a0a0a]
-                   shadow-[0_0_20px_rgba(250,204,21,0.6)]`}
-        style={{
-          transform: isLeft ? 'translateX(50%)' : 'translateX(-50%)'
-        }}
-      />
+              {/* Action Button */}
+              <button className="w-full py-2 px-4 border border-white/20 rounded text-sm font-mono 
+                               hover:bg-[#facc15] hover:text-[#0a0a0a] hover:border-[#facc15] 
+                               transition-all duration-300">
+                REGISTER_NOW →
+              </button>
+              
+              {/* Connector Line to Helix */}
+              <motion.div
+                className={`absolute top-12 ${isLeft ? 'left-full' : 'right-full'} 
+                           h-[2px] bg-gradient-to-r ${isLeft ? 'from-[#facc15] to-transparent' : 'from-transparent to-[#facc15]'}`}
+                style={{ width: '100px' }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </motion.div>
   );
 };
@@ -146,7 +222,7 @@ const Events = () => {
         </h2>
 
         {/* DNA Helix - Fixed/Sticky in Center */}
-        <div className="absolute left-1/2 lg:left-1/2 md:left-1/3 max-md:left-1/4 lg:top-40 top-32 -translate-x-1/2 lg:w-[500px] md:w-[400px] max-md:w-[300px] pointer-events-none" style={{ height: `${events.length * 550 + 250}px` }}>
+        <div className="absolute left-1/2 lg:left-1/2 md:left-1/3 max-md:left-1/4 lg:top-40 top-32 -translate-x-1/2 lg:w-[300px] md:w-[250px] max-md:w-[200px] pointer-events-none" style={{ height: `${events.length * 700 - 100}px` }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -179,14 +255,16 @@ const Events = () => {
         {/* Vertical Timeline Line (subtle background) */}
         <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent -translate-x-1/2 z-0" />
 
-        {/* Event Cards */}
-        <div className="relative lg:pt-24 pt-16 lg:pb-32 pb-24">
+        {/* Event Rings */}
+        <div className="relative lg:pt-24 pt-16 lg:pb-24 pb-16" style={{ minHeight: `${events.length * 700}px` }}>
           {events.map((event, index) => (
-            <EventCard key={event.id} event={event} index={index} />
+            <EventRing key={event.id} event={event} index={index} />
           ))}
         </div>
       </div>
 
+      {/* Bottom Spacer */}
+      <div className="h-16" />
     </div>
   );
 };

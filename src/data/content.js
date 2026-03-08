@@ -59,33 +59,75 @@ export const recruitmentTracks = [
 export const events = [
   {
     id: 1,
-    title: 'AI Research Symposium',
-    date: 'June 15, 2025',
-    time: '10:00 AM - 4:00 PM',
-    venue: 'Tech Center Auditorium',
+    title: 'Annual Research Symposium',
+    date: '02_OCT_2026',
+    dateReadable: 'October 2, 2026',
+    time: '09:00 AM - 6:00 PM',
+    venue: 'Innovation Hall, Main Campus',
     description:
-      'A showcase of cutting-edge models and research presentations from leading AI labs.',
-    capacity: '500+ attendees'
+      'Our flagship event showcasing groundbreaking research across AI, quantum computing, and biotech. Features keynote speakers, poster sessions, and live demos.',
+    capacity: '500+ attendees',
+    category: 'Symposium'
   },
   {
     id: 2,
-    title: 'Blockchain Workshop Series',
-    date: 'July 8-10, 2025',
-    time: '1:00 PM - 5:00 PM',
-    venue: 'Innovation Lab',
+    title: 'AI Ethics Workshop',
+    date: '15_NOV_2026',
+    dateReadable: 'November 15, 2026',
+    time: '2:00 PM - 5:00 PM',
+    venue: 'Tech Center Lab 401',
     description:
-      'A three-day workshop covering architecture, protocol design, and decentralized apps.',
-    capacity: '200 seats'
+      'Deep dive into the ethical implications of AI systems. Interactive sessions on bias detection, responsible AI development, and regulatory frameworks.',
+    capacity: '80 participants',
+    category: 'Workshop'
   },
   {
     id: 3,
-    title: 'Tech Research Hackathon',
-    date: 'August 6, 2025',
-    time: '9:00 AM - 9:00 PM',
-    venue: 'Main Campus Hub',
+    title: 'Robotics Open Lab',
+    date: '03_DEC_2026',
+    dateReadable: 'December 3, 2026',
+    time: '10:00 AM - 4:00 PM',
+    venue: 'Robotics Research Facility',
     description:
-      'A 36-hour marathon focused on solving world problems through technology research.',
-    capacity: '350 participants'
+      'Hands-on experience with autonomous systems, robotic arms, and drone technology. Open to all skill levels with guided tutorials and mentorship.',
+    capacity: '120 seats',
+    category: 'Lab Session'
+  },
+  {
+    id: 4,
+    title: 'Quantum Computing Seminar',
+    date: '18_JAN_2027',
+    dateReadable: 'January 18, 2027',
+    time: '11:00 AM - 1:00 PM',
+    venue: 'Virtual + Physics Department',
+    description:
+      'Explore the fundamentals of quantum algorithms, qubit manipulation, and real-world applications. Guest lecture from IBM Quantum Research Team.',
+    capacity: '200 attendees',
+    category: 'Seminar'
+  },
+  {
+    id: 5,
+    title: 'Tech Research Hackathon',
+    date: '12_FEB_2027',
+    dateReadable: 'February 12-14, 2027',
+    time: '48-hour Sprint',
+    venue: 'Innovation Hub',
+    description:
+      'Build the future in 48 hours. Teams tackle real-world challenges in healthcare tech, sustainability, and smart cities. Prizes, mentorship, and industry networking.',
+    capacity: '350 participants',
+    category: 'Hackathon'
+  },
+  {
+    id: 6,
+    title: 'Biotech Innovation Forum',
+    date: '25_MAR_2027',
+    dateReadable: 'March 25, 2027',
+    time: '1:00 PM - 6:00 PM',
+    venue: 'Biomedical Research Center',
+    description:
+      'Cutting-edge presentations on CRISPR technology, protein folding AI, and synthetic biology. Collaborative discussions with research partners.',
+    capacity: '150 attendees',
+    category: 'Forum'
   }
 ];
 

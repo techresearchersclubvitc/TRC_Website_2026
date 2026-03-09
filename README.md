@@ -121,6 +121,7 @@ vercel
 ## Authors
 
 - **Aditya** - Development and Design
+- **Anvi Bansal** 
 
 ---
 

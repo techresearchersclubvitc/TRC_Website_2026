@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# TRC Website 2026
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Official website for TRC (The Research Club) built with React, Vite, and Tailwind CSS.
+
+## Features
+
+- Modern React 18 with Vite for fast development
+- Tailwind CSS for styling
+- 3D animations and interactive components
+- Responsive design
+- Multiple pages: Home, Events, Team, Recruitments, Contact
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Installs all the required dependencies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm run dev`
 
-### `npm test`
+Runs the app in development mode with Vite.\
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The page will reload when you make changes.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `dist` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run preview`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Preview the production build locally before deploying.
 
-### `npm run eject`
+### `npm run lint`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Runs ESLint to check for code quality issues.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+TRC_Website_2026/
+├── public/
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── src/
+│   ├── assets/              # Images, icons, and static assets
+│   ├── components/          # Reusable React components
+│   │   ├── AtomLogo3D.jsx
+│   │   ├── DNAThread.jsx
+│   │   ├── EventCard.jsx
+│   │   ├── EventCard.css
+│   │   ├── EventsSection.jsx
+│   │   ├── EventsSection.css
+│   │   ├── Footer.jsx
+│   │   ├── Footer.css
+│   │   ├── Navbar.jsx
+│   │   ├── Navbar.css
+│   │   └── OrbitsBackground.jsx
+│   ├── data/                # Static data and content
+│   │   └── content.js
+│   ├── pages/               # Page components
+│   │   ├── Contact.jsx
+│   │   ├── Contact.css
+│   │   ├── Events.jsx
+│   │   ├── Events.css
+│   │   ├── Home.jsx
+│   │   ├── Home.css
+│   │   ├── Recruitments.jsx
+│   │   ├── Recruitments.css
+│   │   ├── Team.jsx
+│   │   └── Team.css
+│   ├── styles/              # Global styles
+│   │   └── theme.css
+│   ├── App.jsx              # Main App component
+│   ├── App.css
+│   ├── AppLogo.jsx
+│   ├── main.jsx             # Application entry point
+│   ├── index.js
+│   ├── index.css
+│   └── OrbitsBackground.jsx
+├── COLORS.md                # Color scheme documentation
+├── eslint.config.js         # ESLint configuration
+├── index.html               # HTML template
+├── package.json             # Dependencies and scripts
+├── postcss.config.js        # PostCSS configuration
+├── tailwind.config.js       # Tailwind CSS configuration
+├── vite.config.js           # Vite configuration
+└── README.md
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
 
-## Learn More
+## Tech Stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Framework**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM
+- **Animations**: Three.js (for 3D components)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deployment
 
-### Code Splitting
+### Deploy to Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) and import your repository
+3. Vercel will auto-detect Vite settings
+4. Click "Deploy"
 
-### Analyzing the Bundle Size
+### Deploy via CLI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm install -g vercel
+vercel login
+vercel
+```
 
-### Making a Progressive Web App
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Aditya** - Development and Design
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made with ❤️ by The Research Club
